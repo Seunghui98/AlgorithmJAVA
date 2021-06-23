@@ -1,4 +1,17 @@
 import java.util.*;
+public class Node {
+    private int index;
+    private int distance;
+
+    public Node(int index, int distance){
+        this.index = index;
+        this.distance = distance;
+    }
+
+    public void show(){
+        System.out.println("(" + this.index + "," + this.distance + ") ");
+    }
+}
 
 public class Hello {
     // 행(Row)이 3개인 인접 리스트 표현
