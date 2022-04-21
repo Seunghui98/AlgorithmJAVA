@@ -1,5 +1,6 @@
 // BOJ - 큐빙(5373번)
 // 구현
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
