@@ -1,3 +1,5 @@
+// BOJ - 새로운 게임(17837번)
+// 구현
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,11 +49,7 @@ public class Main_17837 {
         }
 
         int ans = 0;
-        outer:while (true){
-            if(ans > 1000){
-                break;
-            }
-            ans++;
+        outer:while (++ans <= 1000){
 
             for(int i=1;i<=k;i++){
                 Node node = horse.get(i);
@@ -74,7 +72,7 @@ public class Main_17837 {
                 // 움직임..
                 int nx = node.x + dx[node.dir];
                 int ny = node.y + dy[node.dir];
-                System.out.println(node.dir +" "+nx+" "+ny);
+          
                 if(nx < 0 || nx >= n || ny < 0 || ny >= n || map[nx][ny] == 2){
                     nx -= dx[node.dir];
                     ny -= dy[node.dir];
@@ -82,19 +80,17 @@ public class Main_17837 {
                     int dir = (node.dir%2==0?node.dir+1: node.dir-1);
                     nx += dx[dir];
                     ny += dy[dir];
+                    node.dir = dir;
                     if(nx < 0 || nx >= n || ny < 0 || ny >= n || map[nx][ny] == 2){
-                        System.out.println(nx+ " " + ny +" 여기?");
-                        node.dir = dir;
                         continue;
                     } else {
                         if(map[nx][ny] == 1) {
                             for (int p = up_horse.size() - 1; p >= 0; p--) {
                                 list[nx][ny].add(up_horse.get(p));
                                 Node hh = horse.get(up_horse.get(p));
-                                horse.put(up_horse.get(p), new Node(nx, ny, dir));
+                                horse.put(up_horse.get(p), new Node(nx, ny, hh.dir));
                             }
                         } else {
-                            System.out.println("~~?");
                             for(Integer h:up_horse) {
                                 list[nx][ny].add(h);
                                 Node hh = horse.get(h);
@@ -104,14 +100,12 @@ public class Main_17837 {
 
                     }
                 } else if(map[nx][ny] == 1){
-                    System.out.println("tt");
                     for(int p=up_horse.size()-1;p>=0;p--){
                         list[nx][ny].add(up_horse.get(p));
                         Node hh = horse.get(up_horse.get(p));
                         horse.put(up_horse.get(p), new Node(nx, ny, hh.dir));
                     }
                 } else if(map[nx][ny] == 0){
-                    System.out.println("tt2");
                     for(Integer h:up_horse) {
                         list[nx][ny].add(h);
                         Node hh = horse.get(h);
@@ -120,6 +114,7 @@ public class Main_17837 {
                 }
 
                 if(list[nx][ny].size() >= 4){
+            
                     break outer;
                 }
 
@@ -128,13 +123,7 @@ public class Main_17837 {
                     list[x][y].remove(p);
                 }
 
-                for(int a=0;a<n;a++){
-                    for(int b=0;b<n;b++){
-                        System.out.print(list[a][b] +" ");
-                    }
-                    System.out.println();
-                }
-                System.out.println();
+
             }
 
         }
@@ -142,3 +131,4 @@ public class Main_17837 {
         System.out.println(ans>1000?-1:ans);
     }
 }
+
