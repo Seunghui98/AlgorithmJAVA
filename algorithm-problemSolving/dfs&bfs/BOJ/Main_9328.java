@@ -1,4 +1,4 @@
-// BOJ - 미네랄(2933번)
+// BOJ - 열쇠(9328번)
 // BFS
 
 import java.io.BufferedReader;
