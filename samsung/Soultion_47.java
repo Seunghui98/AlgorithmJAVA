@@ -63,6 +63,7 @@ public class Solution_47 {
 		for(int i=0;i<m;i++) {
 			bfs(team[i].x, team[i].y, i);
 		}
+		
 
 		int score = 0;
 		for(int i=0;i<k;i++) {
@@ -70,31 +71,27 @@ public class Solution_47 {
 			moving();
 			// 공 던지기
 			Node node = null;
-			//System.out.println(i % (4*n));
 			if(i % (4*n) < n) {
 				node = right(i % (4*n));
-				//System.out.println("right");
 			} else if(i % (4*n) < 2*n) {
 				node = up(i % (4*n) -n);
-				//System.out.println("up");
 			} else if(i % (4*n) < 3*n) {
-				node = left(i % (4*n) - 2*n);
-				//System.out.println("left");
+				node = left(n-1-(i % (4*n) - 2*n));
 			} else {
-				node = down(i % (4*n) - 3*n);
-				//System.out.println("down");
+				node = down(n-1-(i % (4*n) - 3*n));
 			}
 			
 			if(node != null) {
 				int g_num = check[node.x][node.y];
-				// 점수 증가
-				int order = 0;
 
+				// 점수 증가
 				if(team[g_num].d) {
+
+					int g_n = group.get(g_num).size();
 					for(int p=group.get(g_num).size()-1;p>=0;p--) {
 						Node g_node = group.get(g_num).get(p);
 						if(g_node.x == node.x && g_node.y == node.y) {
-							score += (p+1)*(p+1);
+							score += (g_n-p)*(g_n-p);
 							break;
 						}
 					}
@@ -105,10 +102,12 @@ public class Solution_47 {
 					map[first.x][first.y] = 1;
 					team[g_num] = new Node(first.x, first.y, false);
 				} else {
+
 					for(int p=0;p<group.get(g_num).size();p++) {
 						Node g_node = group.get(g_num).get(p);
 						if(g_node.x == node.x && g_node.y == node.y) {
 							score += (p+1)*(p+1);
+							break;
 						}					
 					}
 					map[node.x][node.y] = 2;
@@ -120,8 +119,6 @@ public class Solution_47 {
 				}
 				
 			}
-			
-			
 		}
 		
 		System.out.println(score);
@@ -206,7 +203,7 @@ public class Solution_47 {
 			int nx = x + dx[d];
 			int ny = y + dy[d];
 			if(nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-			if(map[nx][ny] == 4) return d;
+			if(map[nx][ny] == 4 || map[nx][ny] == 3) return d;
 		}
 		return 0;
 	}
@@ -223,11 +220,13 @@ public class Solution_47 {
 				int nx = node.x + dx[d];
 				int ny = node.y + dy[d];
 				if(nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+				if(node.x == x && node.y == y && map[nx][ny] == 3) continue;
 				if(check[nx][ny] !=-1) continue;
-				if(map[nx][ny] != 4 && map[nx][ny] != 0) {
+				if(map[nx][ny] != 0) {
 					check[nx][ny] = g_num;
 					q.add(new Node(nx, ny));
-					group.get(g_num).add(new Node(nx, ny));
+					if(map[nx][ny] != 4)
+						group.get(g_num).add(new Node(nx, ny));
 				}
 			}
 		}
@@ -235,3 +234,4 @@ public class Solution_47 {
 	}
 
 }
+
