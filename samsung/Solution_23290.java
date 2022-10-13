@@ -1,4 +1,4 @@
-// 삼성 2021 하반기 오후 2번 - 백준 - 어항정리
+// 삼성 2021 하반기 오후 2번 - 백준 - 마법사 상어와 복제
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
