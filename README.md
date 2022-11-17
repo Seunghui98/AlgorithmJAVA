@@ -10,7 +10,7 @@
 |월| :------------: | :--: | :------------------------------------------------------: |  
 |화| :------------: | :--: | :------------------------------------------------------: |  
 |수| [PROG42746](https://school.programmers.co.kr/learn/courses/30/lessons/42746) | 2 | [221116](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1120/1116.java) |  
-|목| [PROG42747](https://school.programmers.co.kr/learn/courses/30/lessons/42747) | 2 | [221118](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1120/1118.java) |  
+|목| [PROG42747](https://school.programmers.co.kr/learn/courses/30/lessons/42747) | 2 | [221117](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1120/1117.java) |  
 |금| :------------: | 2 | :------------------------------------------------------: |  
 |토| :------------: | :--: | :------------------------------------------------------: |  
 |일| :------------: | :--: | :------------------------------------------------------: |  
