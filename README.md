@@ -9,7 +9,7 @@
 |:--:| :------------: | :--: | :------------------------------------------------------: |
 |월| :------------: | :--: | :------------------------------------------------------: |  
 |화| [PROG42842](https://school.programmers.co.kr/learn/courses/30/lessons/42842?language=java) | 2 | [221122](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1127/22.java) |  
-|수|  |  |  |  
+|수| [PROG43163](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1127/23.java) | 3 | [221123](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1127/23.java)  |  
 |목|  |  |  |  
 |금| :------------: | 2 | :------------------------------------------------------: |  
 |토| :------------: | :--: | :------------------------------------------------------: |  
