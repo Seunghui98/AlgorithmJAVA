@@ -11,7 +11,7 @@
 |화| [PROG43164](https://school.programmers.co.kr/learn/courses/30/lessons/43164) | 3 | [221129](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1204/29.java) |  
 |수| :------------: | :--: | :------------------------------------------------------: |  
 |목| [PROG118669](https://school.programmers.co.kr/learn/courses/30/lessons/118669) | 3 | [221201](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1204/1.java) |  
-|금| :------------: | 2 | :------------------------------------------------------: |  
+|금|  |  | |  
 |토| :------------: | :--: | :------------------------------------------------------: |  
 |일| :------------: | :--: | :------------------------------------------------------: |  
 
