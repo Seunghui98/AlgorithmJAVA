@@ -1,8 +1,9 @@
+// BOJ - 거짓말(1043번)
+// union find
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 public class Main_1043 {
@@ -12,57 +13,68 @@ public class Main_1043 {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        boolean[] check = new boolean[n+1];
+        boolean[] know = new boolean[n+1];
+        HashSet<Integer>[] party = new HashSet[m+1];
+        parent = new int[n+1];
+        for(int i=1;i<=m;i++){
+            party[i] = new HashSet<>();
+        }
         st = new StringTokenizer(br.readLine(), " ");
-        int t = Integer.parseInt(st.nextToken());
-        for(int i=0;i<t;i++){
-            int p = Integer.parseInt(st.nextToken());
-            check[p] = true;
+        int know_cnt = Integer.parseInt(st.nextToken());
+        for(int i=1;i<=know_cnt;i++){
+            int tmp = Integer.parseInt(st.nextToken());
+            know[tmp] = true;
         }
-        parent = new int[m+1];
-        ArrayList<Integer>[] party = new ArrayList[m+1];
-        for(int i=0;i<m+1;i++){
+
+        for(int i=1;i<=n;i++){
             parent[i] = i;
-            party[i] = new ArrayList<>();
         }
 
-
+        // 진실을 아는 사람과 같은 파티 공간에 있으면 진실을 아는 것으로 체크
         for(int i=1;i<=m;i++){
             st = new StringTokenizer(br.readLine(), " ");
             int num = Integer.parseInt(st.nextToken());
-            ArrayList<Integer> list = new ArrayList<>();
-            boolean check_p = false;
-            for(int j=0;j<num;j++){
+            if(num <= 0) continue;
+            int pre = Integer.parseInt(st.nextToken());
+            party[i].add(pre);
+            for(int j=0;j<num-1;j++){
                 int p = Integer.parseInt(st.nextToken());
-                list.add(p);
-                if(check[p]) check_p = true;
+                if(find_parent(pre) != find_parent(p)){
+                    union(pre, p);
+                }
+
+                party[i].add(p);
+                pre = p;
             }
-            party[i] = list;
-            if(check_p){
-                for(int l:list){
-                    check[l] = true;
+        }
+
+        // 진실을 아는 사람과 연관관계가 있음
+        boolean[] check = new boolean[n+1];
+        for(int i=1;i<=n;i++){
+            if(know[i] && !check[i]){
+                int p = find_parent(i);
+                for(int j=1;j<=n;j++){
+                    if(find_parent(j) == p){
+                        know[j] = true;
+                        check[j] = true;
+                    }
                 }
             }
         }
-        int cnt = 0;
+
+        int answer = 0;
         for(int i=1;i<=m;i++){
-            ArrayList<Integer> list = party[i];
-            boolean check_p = false;
-            for(int l:list){
-                if(check[l]) {
-                    check_p = true;
+            boolean c = false;
+            for(int p:party[i]){
+                if(know[p]){
+                    c = true;
                     break;
                 }
             }
-
-            if(check_p){
-                cnt++;
-            }
+            if(!c) answer++;
         }
 
-        System.out.println(m-cnt);
-
-
+        System.out.println(answer);
     }
 
     public static int find_parent(int x){
