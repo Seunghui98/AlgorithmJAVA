@@ -10,8 +10,8 @@
 |월| :------------: | :--: | :------------------------------------------------------: |  
 |화| [BOJ1043](https://www.acmicpc.net/problem/1043) | 골4 | [221206](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1211/1206.java) |  
 |수| [BOJ2015](https://www.acmicpc.net/problem/2015) | 골4 | [221207](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1211/1207.java) |  
-|목|  |  | |  
-|금|  |  | |  
+|목| 푸는 중 ㅠ |  | |  
+|금| [BOJ9466](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1211/1209.java) | 골3 | [221209](https://github.com/Seunghui98/AlgorithmJAVA/blob/main/1day1algo/1211/1209.java) |  
 |토| :------------: | :--: | :------------------------------------------------------: |  
 |일| :------------: | :--: | :------------------------------------------------------: |  
 
