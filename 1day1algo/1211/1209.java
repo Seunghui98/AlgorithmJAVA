@@ -1,6 +1,9 @@
+// BOJ - 텀 프로젝트(9466번)
+// DFS
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Main_9466 {
@@ -18,20 +21,22 @@ public class Main_9466 {
             n = Integer.parseInt(br.readLine());
             st = new StringTokenizer(br.readLine(), " ");
             array = new int[n+1];
-            visited = new boolean[n+1];
             connect = new boolean[n+1];
 
             for(int j=0;j<n;j++){
                 int num = Integer.parseInt(st.nextToken());
                 array[j+1] = num;
             }
-
+            visited = new boolean[n+1];
             int cnt = 0;
             for(int i=1;i<=n;i++){
-                if(connect[i]) continue;
-                check = false;
-                dfs(i, i);
-                if(!check) {
+                if(visited[i]) {
+                    if(!connect[i]) cnt++;
+                    continue;
+                }
+
+                dfs(i, new ArrayList<>());
+                if(!connect[i]) {
                     cnt++;
                 }
             }
@@ -42,20 +47,31 @@ public class Main_9466 {
         System.out.println(sb.toString());
     }
 
-    public static void dfs(int first, int num){
+    public static void dfs(int num, ArrayList<Integer> list){
+        list.add(num);
         visited[num] = true;
 
         int con = array[num];
 
-        if(first == con){
-            check = true;
-            connect[num] = true;
+        if(visited[con]){
+            int idx = -1;
+            for(int i=0;i<list.size();i++){
+                if(list.get(i) == con){
+                    idx = i;
+                    break;
+                }
+            }
+
+            if(idx == -1) return;
+            for(int i=idx;i<list.size();i++){
+                connect[list.get(i)] = true;
+            }
             return;
         }
         if(!visited[con]){
-            dfs(first, con);
-            if(check) connect[num] = true;
+            dfs(con, list);
         }
-        visited[num] = false;
+
     }
 }
+
